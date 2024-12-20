@@ -102,13 +102,13 @@ async function createWindow() {
   // Reset the Window's size and location
   const windowDetails = store.get('options.windowDetails');
   const relaunchWindowDetails = store.get('relaunch.windowDetails');
-  if (relaunchWindowDetails) {
+  if (relaunchWindowDetails && relaunchWindowDetails.position) {
     mainWindow.setPosition(
       relaunchWindowDetails.position[0],
       relaunchWindowDetails.position[1]
     );
     store.delete('relaunch.windowDetails');
-  } else if (windowDetails) {
+  } else if (windowDetails && windowDetails.position) {
     mainWindow.setPosition(
       windowDetails.position[0],
       windowDetails.position[1]
